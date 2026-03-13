@@ -1,0 +1,15 @@
+/* 暗色主题变量 */
+.dark {
+  --editor-bg: #1e1e2e;
+  --editor-text: #cdd6f4;
+  --editor-border: #313244;
+  --sidebar-bg: #181825;
+  --sidebar-hover: #313244;
+  --tab-bg: #181825;
+  --tab-active: #1e1e2e;
+  --tab-border: #313244;
+  --toolbar-bg: #1e1e2e;
+  --toolbar-border: #313244;
+  --statusbar-bg: #181825;
+  --statusbar-text: #6c7086;
+}

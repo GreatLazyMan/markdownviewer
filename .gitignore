@@ -1,0 +1,43 @@
+# 依赖目录
+node_modules/
+package-lock.json
+
+# 构建输出
+dist/
+dist-ssr/
+*.local
+
+# Release 目录
+release/
+src-tauri/target/
+
+# 编辑器和 IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+*.tmp
+*.temp
+.cache/
+
+# 系统文件
+Thumbs.db

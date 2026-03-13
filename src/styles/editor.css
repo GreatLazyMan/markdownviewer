@@ -1,0 +1,184 @@
+/* Milkdown 编辑器样式覆盖 */
+.milkdown {
+  @apply h-full w-full outline-none;
+  background: transparent !important;
+}
+
+.milkdown .editor {
+  @apply h-full w-full max-w-3xl mx-auto px-8 py-6 outline-none;
+  font-size: 16px;
+  line-height: 1.75;
+  background: transparent !important;
+}
+
+/* 移除可能的遮罩层 */
+.milkdown::before,
+.milkdown::after,
+.milkdown .editor::before,
+.milkdown .editor::after {
+  display: none !important;
+}
+
+/* ProseMirror 容器 */
+.milkdown .ProseMirror {
+  background: transparent !important;
+}
+
+/* 移除所有可能的黑色背景 */
+.milkdown * {
+  background-color: transparent !important;
+}
+
+/* 恢复需要背景色的元素 */
+.milkdown .editor pre {
+  background-color: rgb(243 244 246) !important;
+}
+
+.milkdown .editor code {
+  background-color: rgb(243 244 246) !important;
+}
+
+.milkdown .editor th {
+  background-color: rgb(243 244 246) !important;
+}
+
+/* 暗色模式 */
+.dark .milkdown .editor pre {
+  background-color: rgb(31 41 55) !important;
+}
+
+.dark .milkdown .editor code {
+  background-color: rgb(31 41 55) !important;
+}
+
+.dark .milkdown .editor th {
+  background-color: rgb(31 41 55) !important;
+}
+
+/* 标题样式 */
+.milkdown .editor h1 { @apply text-3xl font-bold mt-8 mb-4; }
+.milkdown .editor h2 { @apply text-2xl font-bold mt-6 mb-3; }
+.milkdown .editor h3 { @apply text-xl font-semibold mt-5 mb-2; }
+.milkdown .editor h4 { @apply text-lg font-semibold mt-4 mb-2; }
+
+/* 段落和列表 */
+.milkdown .editor p {
+  @apply my-3;
+  background-color: transparent !important;
+}
+.milkdown .editor ul {
+  @apply list-disc pl-6 my-3;
+  background-color: transparent !important;
+}
+.milkdown .editor ol {
+  @apply list-decimal pl-6 my-3;
+  background-color: transparent !important;
+}
+.milkdown .editor li {
+  @apply my-1;
+  background-color: transparent !important;
+}
+
+/* 移除列表项的所有伪元素和覆盖层 */
+.milkdown .editor li::before,
+.milkdown .editor li::after,
+.milkdown .editor li::marker {
+  background-color: transparent !important;
+  color: inherit !important;
+  background: none !important;
+}
+
+/* 移除列表的伪元素覆盖 */
+.milkdown .editor ul::before,
+.milkdown .editor ul::after,
+.milkdown .editor ol::before,
+.milkdown .editor ol::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 确保列表项内容可见 */
+.milkdown .editor li > * {
+  position: relative !important;
+  z-index: 1 !important;
+  background-color: transparent !important;
+}
+
+/* 强制列表背景透明 */
+.milkdown .editor ul,
+.milkdown .editor ol,
+.milkdown .editor li {
+  background-color: transparent !important;
+  position: relative !important;
+}
+
+/* 代码块 */
+.milkdown .editor pre {
+  @apply rounded-lg p-4 my-4 overflow-x-auto;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 14px;
+}
+
+.milkdown .editor code {
+  @apply rounded px-1.5 py-0.5;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+}
+
+.milkdown .editor pre code {
+  @apply bg-transparent p-0;
+  background-color: transparent !important;
+}
+
+/* 引用块 */
+.milkdown .editor blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 my-4 text-gray-600 dark:text-gray-400 italic;
+}
+
+/* 链接 */
+.milkdown .editor a {
+  @apply text-blue-600 dark:text-blue-400 underline;
+}
+
+/* 分割线 */
+.milkdown .editor hr {
+  @apply border-gray-200 dark:border-gray-700 my-6;
+}
+
+/* 表格 */
+.milkdown .editor table {
+  @apply w-full border-collapse my-4;
+}
+.milkdown .editor th {
+  @apply border border-gray-300 dark:border-gray-600 px-3 py-2 text-left font-semibold;
+}
+.milkdown .editor td {
+  @apply border border-gray-300 dark:border-gray-600 px-3 py-2;
+}
+
+/* 图片 */
+.milkdown .editor img {
+  @apply max-w-full rounded-lg my-4;
+}
+
+/* 选中状态 */
+.milkdown .editor .ProseMirror-selectednode {
+  @apply outline-2 outline-blue-500 outline-offset-1;
+}
+
+/* 移除选择时的黑色背景 */
+.milkdown .ProseMirror-selectednode::after,
+.milkdown .ProseMirror-selectednode::before {
+  display: none !important;
+}
+
+/* 确保选择高亮使用浏览器默认 */
+.milkdown ::selection {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+/* 移除所有伪元素的黑色背景 */
+.milkdown *::before,
+.milkdown *::after {
+  background-color: transparent !important;
+}

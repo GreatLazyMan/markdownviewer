@@ -1,0 +1,15 @@
+/* 亮色主题变量 */
+:root {
+  --editor-bg: #ffffff;
+  --editor-text: #1a1a1a;
+  --editor-border: #e5e7eb;
+  --sidebar-bg: #f9fafb;
+  --sidebar-hover: #f3f4f6;
+  --tab-bg: #f3f4f6;
+  --tab-active: #ffffff;
+  --tab-border: #e5e7eb;
+  --toolbar-bg: #ffffff;
+  --toolbar-border: #e5e7eb;
+  --statusbar-bg: #f3f4f6;
+  --statusbar-text: #6b7280;
+}
