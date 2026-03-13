@@ -4,6 +4,8 @@
 APP_NAME = markdownviewer
 BIN_DIR = /home/xiaodong/tools/bin
 DESKTOP_DIR = $(HOME)/Desktop
+APPS_DIR = $(HOME)/.local/share/applications
+ICON_DIR = $(HOME)/.local/share/icons/hicolor/128x128/apps
 DESKTOP_FILE = $(APP_NAME).desktop
 BUILD_DIR = src-tauri/target/release
 
@@ -30,18 +32,25 @@ install:
 # 创建桌面图标
 desktop:
 	@echo "正在创建桌面图标..."
+	@mkdir -p $(APPS_DIR)
+	@mkdir -p $(ICON_DIR)
+	@cp src-tauri/icons/128x128.png $(ICON_DIR)/$(APP_NAME).png
 	@echo "[Desktop Entry]" > $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Version=1.0" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Type=Application" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Name=Markdownviewer" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Comment=WYSIWYG Markdown 编辑器" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Exec=$(BIN_DIR)/$(APP_NAME)" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
-	@echo "Icon=$(shell pwd)/src-tauri/icons/icon.png" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
+	@echo "Icon=$(APP_NAME)" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Terminal=false" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@echo "Categories=Utility;TextEditor;" >> $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@chmod +x $(DESKTOP_DIR)/$(DESKTOP_FILE)
 	@gio set $(DESKTOP_DIR)/$(DESKTOP_FILE) metadata::trusted true 2>/dev/null || true
+	@cp $(DESKTOP_DIR)/$(DESKTOP_FILE) $(APPS_DIR)/
+	@gtk-update-icon-cache -f -t $(HOME)/.local/share/icons/hicolor 2>/dev/null || true
+	@update-desktop-database $(APPS_DIR) 2>/dev/null || true
 	@echo "桌面图标创建成功: $(DESKTOP_DIR)/$(DESKTOP_FILE)"
+	@echo "应用菜单已更新: $(APPS_DIR)/$(DESKTOP_FILE)"
 
 # 清理构建文件
 clean:
@@ -49,6 +58,8 @@ clean:
 	npm run tauri clean
 	@rm -f $(BIN_DIR)/$(APP_NAME)
 	@rm -f $(DESKTOP_DIR)/$(DESKTOP_FILE)
+	@rm -f $(APPS_DIR)/$(DESKTOP_FILE)
+	@rm -f $(ICON_DIR)/$(APP_NAME).png
 	@echo "清理完成"
 
 # 卸载
@@ -56,4 +67,8 @@ uninstall:
 	@echo "正在卸载..."
 	@rm -f $(BIN_DIR)/$(APP_NAME)
 	@rm -f $(DESKTOP_DIR)/$(DESKTOP_FILE)
+	@rm -f $(APPS_DIR)/$(DESKTOP_FILE)
+	@rm -f $(ICON_DIR)/$(APP_NAME).png
+	@gtk-update-icon-cache -f -t $(HOME)/.local/share/icons/hicolor 2>/dev/null || true
+	@update-desktop-database $(APPS_DIR) 2>/dev/null || true
 	@echo "卸载完成"
