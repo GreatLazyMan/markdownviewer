@@ -2,10 +2,10 @@
 
 # 变量定义
 APP_NAME = markdownviewer
-BIN_DIR = /home/xiaodong/tools/bin
-DESKTOP_DIR = $(HOME)/Desktop
-APPS_DIR = $(HOME)/.local/share/applications
-ICON_DIR = $(HOME)/.local/share/icons/hicolor/128x128/apps
+BIN_DIR = /home/xiaodong/tools/bin          # 二进制文件安装目录
+DESKTOP_DIR = $(HOME)/Desktop               # 桌面快捷方式目录
+APPS_DIR = $(HOME)/.local/share/applications # 系统应用菜单目录
+ICON_DIR = $(HOME)/.local/share/icons/hicolor/128x128/apps # 系统图标目录
 DESKTOP_FILE = $(APP_NAME).desktop
 BUILD_DIR = src-tauri/target/release
 
@@ -16,7 +16,7 @@ build:
 	@echo "正在构建 Tauri 应用..."
 	npm run tauri build
 
-# 安装二进制文件
+# 安装二进制文件到用户工具目录
 install:
 	@echo "正在安装二进制文件到 $(BIN_DIR)..."
 	@mkdir -p $(BIN_DIR)
@@ -29,7 +29,7 @@ install:
 		exit 1; \
 	fi
 
-# 创建桌面图标
+# 创建桌面图标和系统应用菜单入口
 desktop:
 	@echo "正在创建桌面图标..."
 	@mkdir -p $(APPS_DIR)
